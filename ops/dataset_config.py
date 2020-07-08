@@ -100,11 +100,27 @@ def return_kinetics(modality):
         raise NotImplementedError('no such modality:' + modality)
     return filename_categories, filename_imglist_train, filename_imglist_val, root_data, prefix
 
+def return_kinetics600(modality):
+    filename_categories = 600
+    root_dset_dir = '/home/nfs/datasets/'
+    if modality == 'RGB':
+        filename_imglist_train = os.path.join( root_dset_dir, 'Kinetics600/meta/train.txt' )
+        filename_imglist_val = os.path.join( root_dset_dir, 'Kinetics600/meta/val.txt' )
+        root_data = os.path.join( root_dset_dir,'Kinetics600' )
+
+        train_dir = os.path.join( root_data,'train_frms_450x340' )
+        val_dir = os.path.join( root_data,'val_frms_450x340' )
+        prefix = '{:08d}.jpg'
+
+    else:
+        raise NotImplementedError('no such modality:' + modality)
+
+    return filename_categories, filename_imglist_train, filename_imglist_val, root_data, prefix
 
 def return_dataset(dataset, modality):
     dict_single = {'jester': return_jester, 'something': return_something, 'somethingv2': return_somethingv2,
                    'ucf101': return_ucf101, 'hmdb51': return_hmdb51,
-                   'kinetics': return_kinetics }
+                   'kinetics400': return_kinetics, 'kinetics600': return_kinetics600 }
     if dataset in dict_single:
         file_categories, file_imglist_train, file_imglist_val, root_data, prefix = dict_single[dataset](modality)
     else:
