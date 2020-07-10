@@ -104,8 +104,8 @@ def return_kinetics600(modality):
     filename_categories = 600
     root_dset_dir = '/home/nfs/datasets/'
     if modality == 'RGB':
-        filename_imglist_train = os.path.join( root_dset_dir, 'Kinetics600/meta/train.txt' )
-        filename_imglist_val = os.path.join( root_dset_dir, 'Kinetics600/meta/val.txt' )
+        filename_imglist_train = os.path.join( root_dset_dir, 'Kinetics600/meta/train_detox3.txt' )
+        filename_imglist_val = os.path.join( root_dset_dir, 'Kinetics600/meta/val_detox3.txt' )
         root_data = os.path.join( root_dset_dir,'Kinetics600' )
 
         train_dir = os.path.join( root_data,'train_frms_450x340' )
